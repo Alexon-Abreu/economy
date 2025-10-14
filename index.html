@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Economy — U.S. Market & Macro Snapshot</title>
+  <meta name="description" content="Daily Buffett Indicator and macro snapshot for the U.S. economy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="container">
+    <h1>Economy</h1>
+    <p class="subtitle">Zero‑server dashboard updated daily via GitHub Actions.</p>
+  </header>
+
+  <main class="container">
+    <section class="cards">
+      <div class="card">
+        <div class="card-title">Buffett Indicator</div>
+        <div class="kpi"><span id="buffettPct">—</span></div>
+        <div class="subkpi">Market Cap / GDP</div>
+      </div>
+      <div class="card">
+        <div class="card-title">U.S. Total Market Cap</div>
+        <div class="kpi">$<span id="marketCapTn">—</span><span class="unit">T</span></div>
+        <div class="subkpi"><span id="wilshire">Wilshire 5000:</span> <span id="w5000Level">—</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Nominal GDP (SAAR)</div>
+        <div class="kpi">$<span id="gdpTn">—</span><span class="unit">T</span></div>
+        <div class="subkpi">BEA via FRED</div>
+      </div>
+    </section>
+
+    <section class="chart-block">
+      <h2>Buffett Indicator (last 2 years)</h2>
+      <canvas id="biChart"></canvas>
+      <div class="updated">Updated <span id="updatedAt">—</span></div>
+    </section>
+
+    <section class="notes">
+      <h3>Notes</h3>
+      <ul>
+        <li>Total market value is proxied by the FT Wilshire 5000 level (Yahoo Finance) times a billions-per-point factor (default 1.05).</li>
+        <li>GDP is BEA nominal GDP (current dollars), seasonally adjusted annual rate (FRED series <code>GDP</code>).</li>
+        <li>This site is static and updates automatically via a daily GitHub Action—no servers.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <span>© <span id="year"></span> Economy.</span>
+    <span class="sep">•</span>
+    <a href="https://github.com/YOUR_USERNAME/economy" target="_blank" rel="noopener">Source on GitHub</a>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
