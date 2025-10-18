@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import os, json, sys, datetime
-from datetime import date, timedelta
+import os, json, sys
+from datetime import date, datetime, timedelta
 import requests
 import yfinance as yf
 import pandas as pd
@@ -11,22 +11,36 @@ if not FRED_API_KEY:
     sys.exit(1)
 
 BILLIONS_PER_POINT = float(os.environ.get("BILLIONS_PER_POINT", "1.05"))
+# Use FT Wilshire 5000 ticker and fallback to W5000
 INDEX_TICKERS = ["^FTW5000", "^W5000"]
 
 def fetch_gdp_series():
     url = f"https://api.stlouisfed.org/fred/series/observations?series_id=GDP&api_key={FRED_API_KEY}&file_type=json"
-    r = requests.get(url, timeout=30); r.raise_for_status()
+    r = requests.get(url, timeout=30)
+    r.raise_for_status()
     js = r.json()
     obs = js.get("observations", [])
-    gdp = [(o["date"], float(o["value"])) for o in obs if o.get("value") not in (None, ".", "")]
-    return [(pd.to_datetime(d).date(), v) for d, v in gdp]
+    gdp = [(o["date"], o["value"]) for o in obs if o.get("value") not in (None, ".", "")]
+    return [(pd.to_datetime(d).date(), float(v)) for d, v in gdp]
+
+def fetch_index_history():
+    """Fetch Wilshire 5000 index history and return (Series, used_ticker)."""
+    for t in INDEX_TICKERS:
+        try:
+            df = yf.download(t, period="2y", interval="1d", progress=False, auto_adjust=False)
+            if df is None or df.empty or "Close" not in df:
+                continue
+            s = df["Close"].dropna()
+            if s.empty:
+                continue
+            s.index = pd.to_datetime(s.index).date
+            return s, t
+        except Exception:
+            continue
+    raise RuntimeError("No Wilshire 5000 history available from yfinance (both tickers empty).")
 
 def build_series():
-    idx = yf.download(INDEX_TICKERS[0], period="2y", interval="1d", progress=False, auto_adjust=False)
-    if idx.empty:
-        idx = yf.download(INDEX_TICKERS[1], period="2y", interval="1d", progress=False, auto_adjust=False)
-    idx = idx["Close"].dropna()
-    idx.index = pd.to_datetime(idx.index).date
+    idx_series, used_ticker = fetch_index_history()
 
     gdp_series = fetch_gdp_series()
     gdp_df = pd.DataFrame(gdp_series, columns=["date", "gdp_billion"]).set_index("date").sort_index()
@@ -34,29 +48,32 @@ def build_series():
     gdp_daily = gdp_df.reindex(daily_index, method="ffill")
     gdp_daily.index = gdp_daily.index.date
 
-    joined = pd.DataFrame({"w5000": idx}).dropna()
+    joined = pd.DataFrame({"w5000": idx_series}).dropna()
     joined["market_cap_billion"] = joined["w5000"] * BILLIONS_PER_POINT
     joined["gdp_billion_saar"] = gdp_daily.loc[joined.index, "gdp_billion"].values
     joined["buffett_ratio"] = joined["market_cap_billion"] / joined["gdp_billion_saar"]
     latest_row = joined.iloc[-1]
-    return joined, latest_row
+    return joined, latest_row, used_ticker
 
 def main():
-    series, latest_row = build_series()
+    series, latest_row, used_ticker = build_series()
     latest = {
-        "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.utcnow().isoformat() + "Z",
         "w5000_close": round(float(latest_row["w5000"]), 2),
         "billions_per_point": BILLIONS_PER_POINT,
         "market_cap_billion": round(float(latest_row["market_cap_billion"]), 2),
         "gdp_billion_saar": round(float(latest_row["gdp_billion_saar"]), 2),
-        "buffett_ratio": round(float(latest_row["buffett_ratio"]), 4)
+        "buffett_ratio": round(float(latest_row["buffett_ratio"]), 4),
+        "source_ticker": used_ticker,
     }
 
-    hist = [ {"date": d.strftime("%Y-%m-%d"), "buffett_ratio": round(float(v), 4)} for d, v in series["buffett_ratio"].dropna().items() ]
+    hist = [{"date": d.strftime("%Y-%m-%d"), "buffett_ratio": round(float(v), 4)} for d, v in series["buffett_ratio"].items()]
 
     os.makedirs("data", exist_ok=True)
-    with open("data/latest.json", "w") as f: json.dump(latest, f, indent=2)
-    with open("data/history.json", "w") as f: json.dump(hist, f, indent=2)
+    with open("data/latest.json", "w") as f:
+        json.dump(latest, f, indent=2)
+    with open("data/history.json", "w") as f:
+        json.dump(hist, f, indent=2)
     print(json.dumps(latest, indent=2))
 
 if __name__ == "__main__":
