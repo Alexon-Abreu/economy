@@ -42,18 +42,29 @@ def fetch_index_history():
 def build_series():
     idx_series, used_ticker = fetch_index_history()
 
+    # Guard: ensure we really have a Series with a date index
+    if not isinstance(idx_series, pd.Series) or idx_series.empty:
+        raise RuntimeError(f"Invalid Wilshire series: type={type(idx_series)}, size={getattr(idx_series,'size', None)}")
+
+    # Build the DataFrame from the Series (avoids the scalar-path constructor)
+    idx_df = idx_series.astype(float).rename("w5000").to_frame()  # <— key change
+    joined = idx_df.dropna()
+
+    # GDP (quarterly) → forward-filled daily
     gdp_series = fetch_gdp_series()
     gdp_df = pd.DataFrame(gdp_series, columns=["date", "gdp_billion"]).set_index("date").sort_index()
     daily_index = pd.date_range(start=min(gdp_df.index), end=date.today(), freq="D")
     gdp_daily = gdp_df.reindex(daily_index, method="ffill")
     gdp_daily.index = gdp_daily.index.date
 
-    joined = pd.DataFrame({"w5000": idx_series}).dropna()
+    # Join + metrics
     joined["market_cap_billion"] = joined["w5000"] * BILLIONS_PER_POINT
     joined["gdp_billion_saar"] = gdp_daily.loc[joined.index, "gdp_billion"].values
     joined["buffett_ratio"] = joined["market_cap_billion"] / joined["gdp_billion_saar"]
+
     latest_row = joined.iloc[-1]
     return joined, latest_row, used_ticker
+
 
 def main():
     series, latest_row, used_ticker = build_series()
