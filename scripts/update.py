@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os, json, sys
-from datetime import date, datetime, timedelta
+from datetime import date, datetime
 import requests
 import yfinance as yf
 import pandas as pd
@@ -13,6 +13,68 @@ if not FRED_API_KEY:
 BILLIONS_PER_POINT = float(os.environ.get("BILLIONS_PER_POINT", "1.05"))
 # Use FT Wilshire 5000 ticker and fallback to W5000
 INDEX_TICKERS = ["^FTW5000", "^W5000"]
+SP500_TICKER = "^GSPC"
+TARGET_START_DATE = date(1950, 1, 1)
+
+
+def download_ticker_close(ticker, download_periods=None):
+    periods = download_periods or ("max", "30y", "10y", "5y", "2y")
+    for period in periods:
+        try:
+            df = yf.download(ticker, period=period, interval="1d", progress=False, auto_adjust=False)
+            if df is None or df.empty:
+                continue
+
+            if "Close" in df:
+                s = df["Close"]
+            else:
+                close_like = [c for c in df.columns if isinstance(c, str) and c.lower() == "close"]
+                s = df[close_like[0]] if close_like else df.iloc[:, 0]
+
+            if isinstance(s, pd.DataFrame):
+                s = s.iloc[:, 0]
+
+            s = pd.to_numeric(s, errors="coerce").dropna()
+            if s.empty:
+                continue
+
+            s.index = pd.to_datetime(s.index).date
+            return s
+        except Exception as e:
+            print(f"[warn] download_ticker_close {ticker} period={period} failed: {e}", file=sys.stderr)
+            continue
+    raise RuntimeError(f"No price history available for ticker {ticker}.")
+
+
+def extend_with_sp500(idx_series):
+    if idx_series.index.min() <= TARGET_START_DATE:
+        return idx_series
+
+    try:
+        sp_series = download_ticker_close(SP500_TICKER)
+    except Exception as e:
+        print(f"[warn] extend_with_sp500 failed to fetch {SP500_TICKER}: {e}", file=sys.stderr)
+        return idx_series
+
+    overlap = idx_series.index.intersection(sp_series.index)
+    if not overlap:
+        return idx_series
+
+    anchor_date = min(overlap)
+    try:
+        scale = idx_series.loc[anchor_date] / sp_series.loc[anchor_date]
+    except Exception as e:
+        print(f"[warn] extend_with_sp500 failed to compute scale: {e}", file=sys.stderr)
+        return idx_series
+
+    # Scale S&P 500 history so it matches Wilshire 5000 on the first overlap; use it as a proxy pre-coverage.
+    extended = (sp_series * scale).loc[(sp_series.index >= TARGET_START_DATE) & (sp_series.index < anchor_date)]
+    if extended.empty:
+        return idx_series
+
+    combined = pd.concat([extended, idx_series]).sort_index()
+    combined = combined[~combined.index.duplicated(keep="last")]
+    return combined
 
 def fetch_gdp_series():
     url = f"https://api.stlouisfed.org/fred/series/observations?series_id=GDP&api_key={FRED_API_KEY}&file_type=json"
@@ -26,35 +88,13 @@ def fetch_gdp_series():
 def fetch_index_history():
     """Fetch Wilshire 5000 history; return (Series, used_ticker)."""
     for t in INDEX_TICKERS:
-        download_periods = ("max", "30y", "10y", "5y", "2y")
-        for period in download_periods:
-            try:
-                df = yf.download(t, period=period, interval="1d", progress=False, auto_adjust=False)
-                if df is None or df.empty:
-                    continue
-
-                # In CI, yfinance can return a 1-col DataFrame for 'Close' (MultiIndex columns).
-                if "Close" in df:
-                    s = df["Close"]
-                else:
-                    # Fallback: try to find a 'Close' column via fuzzy match
-                    close_like = [c for c in df.columns if isinstance(c, str) and c.lower() == "close"]
-                    s = df[close_like[0]] if close_like else df.iloc[:, 0]
-
-                # If it's a DataFrame (1 column), squeeze to Series
-                if isinstance(s, pd.DataFrame):
-                    s = s.iloc[:, 0]
-
-                # Clean/normalize
-                s = pd.to_numeric(s, errors="coerce").dropna()
-                if s.empty:
-                    continue
-
-                s.index = pd.to_datetime(s.index).date
-                return s, t
-            except Exception as e:
-                print(f"[warn] fetch_index_history {t} period={period} failed: {e}", file=sys.stderr)
-                continue
+        try:
+            series = download_ticker_close(t)
+            series = extend_with_sp500(series)
+            return series, t
+        except Exception as e:
+            print(f"[warn] fetch_index_history {t} failed: {e}", file=sys.stderr)
+            continue
 
     raise RuntimeError("No Wilshire 5000 history available from yfinance (both tickers empty).")
 
