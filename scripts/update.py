@@ -57,7 +57,7 @@ def extend_with_sp500(idx_series):
         return idx_series
 
     overlap = idx_series.index.intersection(sp_series.index)
-    if not overlap:
+    if overlap.empty:
         return idx_series
 
     anchor_date = min(overlap)
