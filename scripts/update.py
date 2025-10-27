@@ -26,33 +26,35 @@ def fetch_gdp_series():
 def fetch_index_history():
     """Fetch Wilshire 5000 history; return (Series, used_ticker)."""
     for t in INDEX_TICKERS:
-        try:
-            df = yf.download(t, period="2y", interval="1d", progress=False, auto_adjust=False)
-            if df is None or df.empty:
+        download_periods = ("max", "30y", "10y", "5y", "2y")
+        for period in download_periods:
+            try:
+                df = yf.download(t, period=period, interval="1d", progress=False, auto_adjust=False)
+                if df is None or df.empty:
+                    continue
+
+                # In CI, yfinance can return a 1-col DataFrame for 'Close' (MultiIndex columns).
+                if "Close" in df:
+                    s = df["Close"]
+                else:
+                    # Fallback: try to find a 'Close' column via fuzzy match
+                    close_like = [c for c in df.columns if isinstance(c, str) and c.lower() == "close"]
+                    s = df[close_like[0]] if close_like else df.iloc[:, 0]
+
+                # If it's a DataFrame (1 column), squeeze to Series
+                if isinstance(s, pd.DataFrame):
+                    s = s.iloc[:, 0]
+
+                # Clean/normalize
+                s = pd.to_numeric(s, errors="coerce").dropna()
+                if s.empty:
+                    continue
+
+                s.index = pd.to_datetime(s.index).date
+                return s, t
+            except Exception as e:
+                print(f"[warn] fetch_index_history {t} period={period} failed: {e}", file=sys.stderr)
                 continue
-
-            # In CI, yfinance can return a 1-col DataFrame for 'Close' (MultiIndex columns).
-            if "Close" in df:
-                s = df["Close"]
-            else:
-                # Fallback: try to find a 'Close' column via fuzzy match
-                close_like = [c for c in df.columns if isinstance(c, str) and c.lower() == "close"]
-                s = df[close_like[0]] if close_like else df.iloc[:, 0]
-
-            # If it's a DataFrame (1 column), squeeze to Series
-            if isinstance(s, pd.DataFrame):
-                s = s.iloc[:, 0]
-
-            # Clean/normalize
-            s = pd.to_numeric(s, errors="coerce").dropna()
-            if s.empty:
-                continue
-
-            s.index = pd.to_datetime(s.index).date
-            return s, t
-        except Exception as e:
-            print(f"[warn] fetch_index_history {t} failed: {e}", file=sys.stderr)
-            continue
 
     raise RuntimeError("No Wilshire 5000 history available from yfinance (both tickers empty).")
 
