@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-02-19T22:00:23.095202Z",
-  "w5000_close": 68750.21,
+  "generated_at": "2026-02-20T21:54:35.401228Z",
+  "w5000_close": 69171.41,
   "billions_per_point": 1.05,
-  "market_cap_billion": 72187.72,
-  "gdp_billion_saar": 31098.03,
-  "buffett_ratio": 2.3213,
+  "market_cap_billion": 72629.98,
+  "gdp_billion_saar": 31490.07,
+  "buffett_ratio": 2.3064,
   "source_ticker": "^FTW5000"
 }
