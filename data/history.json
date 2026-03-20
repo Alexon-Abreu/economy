@@ -76618,5 +76618,33 @@
   {
     "date": "2026-03-03",
     "buffett_ratio": 2.2781
+  },
+  {
+    "date": "2026-03-11",
+    "buffett_ratio": 2.2593
+  },
+  {
+    "date": "2026-03-12",
+    "buffett_ratio": 2.2233
+  },
+  {
+    "date": "2026-03-13",
+    "buffett_ratio": 2.2108
+  },
+  {
+    "date": "2026-03-16",
+    "buffett_ratio": 2.2332
+  },
+  {
+    "date": "2026-03-17",
+    "buffett_ratio": 2.2402
+  },
+  {
+    "date": "2026-03-18",
+    "buffett_ratio": 2.21
+  },
+  {
+    "date": "2026-03-19",
+    "buffett_ratio": 2.2055
   }
 ]
