@@ -76457,446 +76457,446 @@
   },
   {
     "date": "2026-01-02",
-    "buffett_ratio": 2.2582
+    "buffett_ratio": 2.2549
   },
   {
     "date": "2026-01-05",
-    "buffett_ratio": 2.2749
+    "buffett_ratio": 2.2716
   },
   {
     "date": "2026-01-06",
-    "buffett_ratio": 2.2909
+    "buffett_ratio": 2.2875
   },
   {
     "date": "2026-01-07",
-    "buffett_ratio": 2.2826
+    "buffett_ratio": 2.2792
   },
   {
     "date": "2026-01-08",
-    "buffett_ratio": 2.2839
+    "buffett_ratio": 2.2806
   },
   {
     "date": "2026-01-09",
-    "buffett_ratio": 2.2984
+    "buffett_ratio": 2.2951
   },
   {
     "date": "2026-01-12",
-    "buffett_ratio": 2.302
+    "buffett_ratio": 2.2987
   },
   {
     "date": "2026-01-13",
-    "buffett_ratio": 2.2979
+    "buffett_ratio": 2.2946
   },
   {
     "date": "2026-01-14",
-    "buffett_ratio": 2.2881
+    "buffett_ratio": 2.2848
   },
   {
     "date": "2026-01-15",
-    "buffett_ratio": 2.295
+    "buffett_ratio": 2.2917
   },
   {
     "date": "2026-01-16",
-    "buffett_ratio": 2.2938
+    "buffett_ratio": 2.2904
   },
   {
     "date": "2026-01-20",
-    "buffett_ratio": 2.2483
+    "buffett_ratio": 2.2451
   },
   {
     "date": "2026-01-21",
-    "buffett_ratio": 2.2753
-  },
-  {
-    "date": "2026-01-22",
-    "buffett_ratio": 2.2878
-  },
-  {
-    "date": "2026-01-23",
-    "buffett_ratio": 2.2849
-  },
-  {
-    "date": "2026-01-26",
-    "buffett_ratio": 2.2948
-  },
-  {
-    "date": "2026-01-27",
-    "buffett_ratio": 2.3035
-  },
-  {
-    "date": "2026-01-28",
-    "buffett_ratio": 2.302
-  },
-  {
-    "date": "2026-01-29",
-    "buffett_ratio": 2.2986
-  },
-  {
-    "date": "2026-01-30",
-    "buffett_ratio": 2.2856
-  },
-  {
-    "date": "2026-02-02",
-    "buffett_ratio": 2.2986
-  },
-  {
-    "date": "2026-02-03",
-    "buffett_ratio": 2.2812
-  },
-  {
-    "date": "2026-02-04",
-    "buffett_ratio": 2.2707
-  },
-  {
-    "date": "2026-02-05",
-    "buffett_ratio": 2.2417
-  },
-  {
-    "date": "2026-02-06",
-    "buffett_ratio": 2.2893
-  },
-  {
-    "date": "2026-02-09",
-    "buffett_ratio": 2.3
-  },
-  {
-    "date": "2026-02-10",
-    "buffett_ratio": 2.2932
-  },
-  {
-    "date": "2026-02-11",
-    "buffett_ratio": 2.2913
-  },
-  {
-    "date": "2026-02-12",
-    "buffett_ratio": 2.255
-  },
-  {
-    "date": "2026-02-13",
-    "buffett_ratio": 2.2588
-  },
-  {
-    "date": "2026-02-17",
-    "buffett_ratio": 2.2609
-  },
-  {
-    "date": "2026-02-18",
-    "buffett_ratio": 2.2739
-  },
-  {
-    "date": "2026-02-19",
-    "buffett_ratio": 2.2687
-  },
-  {
-    "date": "2026-02-20",
-    "buffett_ratio": 2.2826
-  },
-  {
-    "date": "2026-02-23",
-    "buffett_ratio": 2.2563
-  },
-  {
-    "date": "2026-02-24",
-    "buffett_ratio": 2.2747
-  },
-  {
-    "date": "2026-02-25",
-    "buffett_ratio": 2.2923
-  },
-  {
-    "date": "2026-02-26",
-    "buffett_ratio": 2.2837
-  },
-  {
-    "date": "2026-02-27",
     "buffett_ratio": 2.272
   },
   {
+    "date": "2026-01-22",
+    "buffett_ratio": 2.2845
+  },
+  {
+    "date": "2026-01-23",
+    "buffett_ratio": 2.2816
+  },
+  {
+    "date": "2026-01-26",
+    "buffett_ratio": 2.2915
+  },
+  {
+    "date": "2026-01-27",
+    "buffett_ratio": 2.3002
+  },
+  {
+    "date": "2026-01-28",
+    "buffett_ratio": 2.2987
+  },
+  {
+    "date": "2026-01-29",
+    "buffett_ratio": 2.2953
+  },
+  {
+    "date": "2026-01-30",
+    "buffett_ratio": 2.2823
+  },
+  {
+    "date": "2026-02-02",
+    "buffett_ratio": 2.2953
+  },
+  {
+    "date": "2026-02-03",
+    "buffett_ratio": 2.2779
+  },
+  {
+    "date": "2026-02-04",
+    "buffett_ratio": 2.2674
+  },
+  {
+    "date": "2026-02-05",
+    "buffett_ratio": 2.2384
+  },
+  {
+    "date": "2026-02-06",
+    "buffett_ratio": 2.2859
+  },
+  {
+    "date": "2026-02-09",
+    "buffett_ratio": 2.2967
+  },
+  {
+    "date": "2026-02-10",
+    "buffett_ratio": 2.2899
+  },
+  {
+    "date": "2026-02-11",
+    "buffett_ratio": 2.2879
+  },
+  {
+    "date": "2026-02-12",
+    "buffett_ratio": 2.2517
+  },
+  {
+    "date": "2026-02-13",
+    "buffett_ratio": 2.2555
+  },
+  {
+    "date": "2026-02-17",
+    "buffett_ratio": 2.2576
+  },
+  {
+    "date": "2026-02-18",
+    "buffett_ratio": 2.2706
+  },
+  {
+    "date": "2026-02-19",
+    "buffett_ratio": 2.2654
+  },
+  {
+    "date": "2026-02-20",
+    "buffett_ratio": 2.2793
+  },
+  {
+    "date": "2026-02-23",
+    "buffett_ratio": 2.253
+  },
+  {
+    "date": "2026-02-24",
+    "buffett_ratio": 2.2714
+  },
+  {
+    "date": "2026-02-25",
+    "buffett_ratio": 2.2889
+  },
+  {
+    "date": "2026-02-26",
+    "buffett_ratio": 2.2804
+  },
+  {
+    "date": "2026-02-27",
+    "buffett_ratio": 2.2687
+  },
+  {
     "date": "2026-03-02",
-    "buffett_ratio": 2.2745
+    "buffett_ratio": 2.2712
   },
   {
     "date": "2026-03-03",
-    "buffett_ratio": 2.2511
+    "buffett_ratio": 2.2478
   },
   {
     "date": "2026-03-11",
-    "buffett_ratio": 2.2325
+    "buffett_ratio": 2.2293
   },
   {
     "date": "2026-03-12",
-    "buffett_ratio": 2.1969
+    "buffett_ratio": 2.1937
   },
   {
     "date": "2026-03-13",
-    "buffett_ratio": 2.1846
+    "buffett_ratio": 2.1814
   },
   {
     "date": "2026-03-16",
-    "buffett_ratio": 2.2067
+    "buffett_ratio": 2.2035
   },
   {
     "date": "2026-03-17",
-    "buffett_ratio": 2.2137
+    "buffett_ratio": 2.2105
   },
   {
     "date": "2026-03-18",
-    "buffett_ratio": 2.1838
+    "buffett_ratio": 2.1806
   },
   {
     "date": "2026-03-19",
-    "buffett_ratio": 2.1794
+    "buffett_ratio": 2.1762
   },
   {
     "date": "2026-03-20",
-    "buffett_ratio": 2.1449
+    "buffett_ratio": 2.1418
   },
   {
     "date": "2026-03-23",
-    "buffett_ratio": 2.1716
+    "buffett_ratio": 2.1685
   },
   {
     "date": "2026-03-24",
-    "buffett_ratio": 2.1647
+    "buffett_ratio": 2.1616
   },
   {
     "date": "2026-03-25",
-    "buffett_ratio": 2.1777
+    "buffett_ratio": 2.1745
   },
   {
     "date": "2026-03-26",
-    "buffett_ratio": 2.1411
+    "buffett_ratio": 2.138
   },
   {
     "date": "2026-03-27",
-    "buffett_ratio": 2.1048
+    "buffett_ratio": 2.1017
   },
   {
     "date": "2026-03-30",
-    "buffett_ratio": 2.0953
+    "buffett_ratio": 2.0922
   },
   {
     "date": "2026-03-31",
-    "buffett_ratio": 2.1569
+    "buffett_ratio": 2.1537
   },
   {
     "date": "2026-04-01",
-    "buffett_ratio": 2.172
+    "buffett_ratio": 2.1688
   },
   {
     "date": "2026-04-02",
-    "buffett_ratio": 2.1756
+    "buffett_ratio": 2.1725
   },
   {
     "date": "2026-04-06",
-    "buffett_ratio": 2.1856
+    "buffett_ratio": 2.1825
   },
   {
     "date": "2026-04-07",
-    "buffett_ratio": 2.187
+    "buffett_ratio": 2.1838
   },
   {
     "date": "2026-04-08",
-    "buffett_ratio": 2.2421
+    "buffett_ratio": 2.2389
   },
   {
     "date": "2026-04-09",
-    "buffett_ratio": 2.2545
+    "buffett_ratio": 2.2512
   },
   {
     "date": "2026-04-10",
-    "buffett_ratio": 2.2507
+    "buffett_ratio": 2.2474
   },
   {
     "date": "2026-04-13",
-    "buffett_ratio": 2.2756
+    "buffett_ratio": 2.2723
   },
   {
     "date": "2026-04-14",
-    "buffett_ratio": 2.3014
+    "buffett_ratio": 2.298
   },
   {
     "date": "2026-04-15",
-    "buffett_ratio": 2.318
+    "buffett_ratio": 2.3146
   },
   {
     "date": "2026-04-16",
-    "buffett_ratio": 2.3239
+    "buffett_ratio": 2.3205
   },
   {
     "date": "2026-04-17",
-    "buffett_ratio": 2.3536
+    "buffett_ratio": 2.3502
   },
   {
     "date": "2026-04-20",
-    "buffett_ratio": 2.3508
+    "buffett_ratio": 2.3474
   },
   {
     "date": "2026-04-21",
-    "buffett_ratio": 2.3354
+    "buffett_ratio": 2.332
   },
   {
     "date": "2026-04-22",
-    "buffett_ratio": 2.3576
+    "buffett_ratio": 2.3542
   },
   {
     "date": "2026-04-23",
-    "buffett_ratio": 2.3475
+    "buffett_ratio": 2.3441
   },
   {
     "date": "2026-04-24",
-    "buffett_ratio": 2.3637
+    "buffett_ratio": 2.3602
   },
   {
     "date": "2026-04-27",
-    "buffett_ratio": 2.3659
+    "buffett_ratio": 2.3625
   },
   {
     "date": "2026-04-28",
-    "buffett_ratio": 2.3529
+    "buffett_ratio": 2.3495
   },
   {
     "date": "2026-04-29",
-    "buffett_ratio": 2.3505
+    "buffett_ratio": 2.3471
   },
   {
     "date": "2026-04-30",
-    "buffett_ratio": 2.3776
+    "buffett_ratio": 2.3742
   },
   {
     "date": "2026-05-01",
-    "buffett_ratio": 2.3844
+    "buffett_ratio": 2.381
   },
   {
     "date": "2026-05-04",
-    "buffett_ratio": 2.3746
+    "buffett_ratio": 2.3711
   },
   {
     "date": "2026-05-05",
-    "buffett_ratio": 2.395
+    "buffett_ratio": 2.3915
   },
   {
     "date": "2026-05-06",
-    "buffett_ratio": 2.4293
+    "buffett_ratio": 2.4258
   },
   {
     "date": "2026-05-07",
-    "buffett_ratio": 2.4165
+    "buffett_ratio": 2.413
   },
   {
     "date": "2026-05-08",
-    "buffett_ratio": 2.4356
+    "buffett_ratio": 2.4321
   },
   {
     "date": "2026-05-11",
-    "buffett_ratio": 2.4395
+    "buffett_ratio": 2.436
   },
   {
     "date": "2026-05-12",
-    "buffett_ratio": 2.4335
+    "buffett_ratio": 2.43
   },
   {
     "date": "2026-05-13",
-    "buffett_ratio": 2.4469
+    "buffett_ratio": 2.4433
   },
   {
     "date": "2026-05-14",
-    "buffett_ratio": 2.4652
+    "buffett_ratio": 2.4616
   },
   {
     "date": "2026-05-15",
-    "buffett_ratio": 2.4325
+    "buffett_ratio": 2.4289
   },
   {
     "date": "2026-05-18",
-    "buffett_ratio": 2.4299
+    "buffett_ratio": 2.4264
   },
   {
     "date": "2026-05-19",
-    "buffett_ratio": 2.4132
+    "buffett_ratio": 2.4097
   },
   {
     "date": "2026-05-20",
-    "buffett_ratio": 2.4421
+    "buffett_ratio": 2.4386
   },
   {
     "date": "2026-05-21",
-    "buffett_ratio": 2.4481
+    "buffett_ratio": 2.4445
   },
   {
     "date": "2026-05-22",
-    "buffett_ratio": 2.459
+    "buffett_ratio": 2.4554
   },
   {
     "date": "2026-05-26",
-    "buffett_ratio": 2.4766
+    "buffett_ratio": 2.473
   },
   {
     "date": "2026-05-27",
-    "buffett_ratio": 2.4766
+    "buffett_ratio": 2.473
   },
   {
     "date": "2026-05-28",
-    "buffett_ratio": 2.4919
+    "buffett_ratio": 2.4883
   },
   {
     "date": "2026-05-29",
-    "buffett_ratio": 2.4965
+    "buffett_ratio": 2.4929
   },
   {
     "date": "2026-06-01",
-    "buffett_ratio": 2.5022
+    "buffett_ratio": 2.4986
   },
   {
     "date": "2026-06-02",
-    "buffett_ratio": 2.5079
+    "buffett_ratio": 2.5043
   },
   {
     "date": "2026-06-03",
-    "buffett_ratio": 2.4888
+    "buffett_ratio": 2.4852
   },
   {
     "date": "2026-06-04",
-    "buffett_ratio": 2.5012
+    "buffett_ratio": 2.4976
   },
   {
     "date": "2026-06-05",
-    "buffett_ratio": 2.4334
+    "buffett_ratio": 2.4298
   },
   {
     "date": "2026-06-08",
-    "buffett_ratio": 2.4417
+    "buffett_ratio": 2.4382
   },
   {
     "date": "2026-06-09",
-    "buffett_ratio": 2.437
+    "buffett_ratio": 2.4335
   },
   {
     "date": "2026-06-10",
-    "buffett_ratio": 2.3975
+    "buffett_ratio": 2.394
   },
   {
     "date": "2026-06-11",
-    "buffett_ratio": 2.4427
+    "buffett_ratio": 2.4391
   },
   {
     "date": "2026-06-12",
-    "buffett_ratio": 2.455
+    "buffett_ratio": 2.4515
   },
   {
     "date": "2026-06-15",
-    "buffett_ratio": 2.4938
+    "buffett_ratio": 2.4902
   },
   {
     "date": "2026-06-16",
-    "buffett_ratio": 2.4789
+    "buffett_ratio": 2.4753
   },
   {
     "date": "2026-06-17",
-    "buffett_ratio": 2.4495
+    "buffett_ratio": 2.4459
   },
   {
     "date": "2026-06-18",
-    "buffett_ratio": 2.4775
+    "buffett_ratio": 2.4739
   }
 ]
