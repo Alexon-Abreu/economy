@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-30T00:44:56.001619Z",
-  "w5000_close": 76394.27,
+  "generated_at": "2026-10-01T00:49:10.913571Z",
+  "w5000_close": 76245.45,
   "billions_per_point": 1.05,
-  "market_cap_billion": 80213.99,
-  "gdp_billion_saar": 32486.07,
-  "buffett_ratio": 2.4692,
+  "market_cap_billion": 80057.73,
+  "gdp_billion_saar": 32563.03,
+  "buffett_ratio": 2.4585,
   "source_ticker": "^W5000"
 }
